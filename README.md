@@ -4,5 +4,5 @@ Takes pickled data in the needed format, and removes all data that corresponds t
 
 How to execute:
 ```
-python3 filter.py [Data file in .p format]
+python3 filter.py ./[Data file in .p format]
 ```

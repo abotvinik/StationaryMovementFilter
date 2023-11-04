@@ -48,16 +48,17 @@ for i in range(0, elems):
 
     if np.linalg.norm(init_v_gt[i]) < 10:
         print('New list terminating')
-        t0 = t[0]
-        t = t - t0
+        t0 = init_t0 + t[0]
+        t = t - t[0]
 
-        d = {'name': name, 'ang_gt': ang_gt, 'p_gt': p_gt, 't': t, 't0': t0, 'v_gt': v_gt, 'u': u, 'quat_test': quat_test}
+        d = {'name': name, 'ang_gt': ang_gt, 'p_gt': p_gt, 't': t.tolist(), 't0': t0, 'v_gt': v_gt, 'u': u, 'quat_test': quat_test}
         print('Dictionary Made')
 
         for key in d:
-            print('Converting' + key + 'to FloatTensor')
             if isinstance(d[key], list):
+                print('Converting ' + key + ' to FloatTensor')
                 d[key] = torch.FloatTensor(d[key])
+            print(type(d[key]))
 
         dmp = open(os.path.join('./' + name + '_filtered/', d["name"] + "_set_" + str(count) + ".p"), "wb")
         pickle.dump(d, dmp)
