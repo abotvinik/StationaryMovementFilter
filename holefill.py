@@ -12,13 +12,14 @@ name = filepath[len(filepath) - filepath[::-1].index('/'):
     len(filepath) - filepath[::-1].index('.') - 1]
 
 new_p = data['p']
+print(elems)
 
 i = 1
 maxCounter = sys.float_info.min
 timeOfMax = 0
 while i < elems:
     counter = 0
-    while data['p'][i + counter] == data['p'][i - 1]:
+    while  i + counter < elems - 1 and data['p'][i + counter] == data['p'][i - 1]:
         counter += 1
 
     step = np.array(data['p'][i + counter]) - np.array(data['p'][i - 1]) / (counter + 1)
